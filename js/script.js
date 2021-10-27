@@ -46,7 +46,7 @@ for(let i = 0; i < images.length; i++){
 
   imageContainer.innerHTML= `
   <img src=${images[i]} alt="immagine">
-  <div class="text-title"><h3>${title[i]}</h3></div>
+  <div class="text-title"><h5>${title[i]}</h5></div>
   <div class="text-description">${text[i]}</div>
   `
   ;
