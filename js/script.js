@@ -1,4 +1,4 @@
-const items = [
+const images = [
   'img/01.jpg',
   'img/02.jpg',
   'img/03.jpg',
@@ -22,47 +22,57 @@ const text = [
   'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,'
 ];
 
-console.log(items);
-let index = 0;
+console.log(images);
+
 
 const next = document.querySelector(".next");
 const prev = document.querySelector(".prev");
 
-console.log(items);
+console.log(images);
+
 
 const slider = document.querySelector(".slider");
-const slider = document.querySelector(".text-title");
-const slider = document.querySelector(".text-description");
 
 
-for(let i = 0; i < items.length; i++){
+for(let i = 0; i < images.length; i++){
   const imageContainer = document.createElement("div");
   slider.append(imageContainer);
+  
 
-
+  // console.log(imageContainer);
   imageContainer.className = "item";
 
-  console.log(item);
+  if(i == 0){
+    imageContainer.classList += (" active");
 
-  if(i === index){
-    imageContainer.classList.add(" active");
+    
   }
 
+  imageContainer.innerHTML= `
+  <img src=${images[i]} alt="immagine">
+  `
+  ;
+
+  console.log(imageContainer);
 }
 
+const counter = document.getElementsByClassName("item");
+
+let index = 0;
+
 next.addEventListener("click", function(){
-  items[index].classList.remove("active");
+  counter[index].classList.remove("active");
   index++;
 
-  if(index > items.length -1) index = 0;
-  items[index].classList.add(" active");
+  if(index > counter.length -1) index = 0;
+  counter[index].classList += (" active");
 
 });
 
 prev.addEventListener("click", function(){
-  items[index].classList.remove("active");
+  counter[index].classList.remove("active");
   index--;
   
-  if(index < 0) index = items.length -1;
-  items[index].classList.add(" active");
+  if(index < 0) index = counter.length -1;
+  counter[index].classList += (" active");
 })
