@@ -32,47 +32,73 @@ console.log(images);
 
 
 const slider = document.querySelector(".slider");
-
+const mdsColumn = document.querySelector(".mds-column");
 
 for(let i = 0; i < images.length; i++){
   const imageContainer = document.createElement("div");
+  const imageContainerRight = document.createElement("div");
   slider.append(imageContainer);
-  
+  mdsColumn.append(imageContainerRight);
 
-  // console.log(imageContainer);
   imageContainer.className = "item";
+  imageContainerRight.className = "item-right col";
 
-  if(i == 0){
-    imageContainer.classList += (" active");
-
-    
-  }
 
   imageContainer.innerHTML= `
   <img src=${images[i]} alt="immagine">
+  <div class="text-title"><h3>${title[i]}</h3></div>
+  <div class="text-description">${text[i]}</div>
   `
   ;
 
+  imageContainerRight.innerHTML=`
+  <img class="img-item" src=${images[i]} alt="">   
+  `
+  ;
   console.log(imageContainer);
+  
+
+  if(i == 0){
+    imageContainer.classList += (" active");
+  }
+
 }
 
 const counter = document.getElementsByClassName("item");
+const counterRight = document.getElementsByClassName("img-item");
+
 
 let index = 0;
 
+if(index == 0){
+  counterRight[0].classList += (" border-active");
+}
+
 next.addEventListener("click", function(){
   counter[index].classList.remove("active");
+
+  counterRight[index].classList.remove("border-active");
   index++;
 
   if(index > counter.length -1) index = 0;
+
   counter[index].classList += (" active");
 
+  counterRight[index].classList += (" border-active");
 });
 
 prev.addEventListener("click", function(){
   counter[index].classList.remove("active");
+
+  counterRight[index].classList.remove("border-active");
+
   index--;
-  
+
   if(index < 0) index = counter.length -1;
+
   counter[index].classList += (" active");
-})
+
+  counterRight[index].classList += (" border-active");
+
+});
+
