@@ -47,6 +47,10 @@
   bottom: 3px;
 }
 
+.prev:hover, .next:hover {
+  background-color: white;
+}
+
 .bord{
   border: 2px solid white;
 }
